@@ -1,5 +1,5 @@
 # twitchMe
-* This app intends to give the user a customized experience of twitch.tv
+# This app intends to give the user a customized experience of twitch.tv
 * Features:
   - Individual user account
   - Personalized page to include favorite streams
