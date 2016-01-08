@@ -3,6 +3,7 @@
 * Features:
   - Individual user account
   - Personalized page to include favorite streams
+  - Track streamers
   - Tracks status of streamers (on/offline)
   - Search and filter for all games
 * Wishlist:
