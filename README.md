@@ -1,4 +1,4 @@
-# twitchMe (Dev Branch)
+# twitchersDigest
 # This app intends to give the user a customized experience of twitch.tv
 * Features:
   - Individual user account
