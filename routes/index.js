@@ -16,4 +16,15 @@ $('.twitch-connect').click(function() {
   });
 })
 
+Twitch.init({clientId: 'tm1iga98r4cytkq9wnaeup1j9m2iroe'}, function(error, status) {
+  if (error) {
+    // error encountered while loading
+    console.log(error);
+  }
+  // the sdk is now loaded
+  if (status.authenticated) {
+    // user is currently logged in
+  }
+});
+
 module.exports = router;
