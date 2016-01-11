@@ -16,6 +16,15 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
+	<!-- <script src="//code.jquery.com/jquery.min.js"></script> -->
+	<script src="https://ttv-api.s3.amazonaws.com/twitch.min.js"></script>
+
+	<script>  
+  	Twitch.init({clientId: 'tm1iga98r4cytkq9wnaeup1j9m2iroe'}, function(error, status) {
+    // the sdk is now loaded
+  	});
+	</script>
+
   </head>
   <body>
   	<!-- Fixed navbar -->
@@ -35,6 +44,7 @@
 	    <form class="form-signin">       
 	      <h2 class="form-signin-heading">Please login</h2>
 	      <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
+
 	      <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
 		    <div class="checkbox">
 		      <label class="checkbox">
@@ -42,7 +52,8 @@
 		      </label>
 		    </div>
 	      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-	      <button class="btn btn-lg btn-primary btn-block" type="submit">Login using Twitch</button>
+	      <!-- <button class="btn btn-lg btn-primary btn-block" type="submit">Login using Twitch</button> -->
+	      <img src="http://ttv-api.s3.amazonaws.com/assets/connect_dark.png" class="twitch-connect" href="#" />
 	    </form>
 	  </div>
 

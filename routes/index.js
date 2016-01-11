@@ -10,4 +10,10 @@ router.get('/dashboard', function(req, res, next) {
   res.render('dashboard', { title: "Twitcher's Digest"  });
 });
 
+$('.twitch-connect').click(function() {
+  Twitch.login({
+    scope: ['user_read', 'channel_read']
+  });
+})
+
 module.exports = router;
