@@ -1,0 +1,50 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+h1 {
+	text-align: center;
+}
+
+.row {
+	height: 300px;
+}
+
+.input-group {
+	margin-top: 10px;
+	border-radius: 20px;
+    padding: 20px; 
+	border: 3px solid purple;
+	background-color: gray;
+
+
+}
+
+img {
+	padding-right: 10px;
+	padding-top: 5px;
+}
+.col-md-3
+{
+	border-radius: 25px;
+    padding: 20px; 
+    width: 200px;
+    height: 600px; 
+	border: 3px solid purple;
+	background-color: gray;
+}
+
+.col-md-6
+{
+	border-radius: 25px;
+    padding: 20px; 
+    width: 200px;
+    height: 600px; 
+	border: 3px solid purple;
+}
+
