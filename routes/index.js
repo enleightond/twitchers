@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/dashboard', function(req, res, next) {
-	res.render('dashboard', { title: "Twitcher's Digest"});
+	res.render('dashboard', { title: "Twitcher's Digest", games:[],streams:[],streamers:[] });
 });
 
 router.get('/dashboard/search', function(req,res, next) {
@@ -17,22 +17,30 @@ router.get('/dashboard/search', function(req,res, next) {
 	console.log("This is " + twrsQuery);
 
 	var twitchUrl = 'https://api.twitch.tv/kraken/search/games?q=' + twrsQuery + '&type=suggest'
-
 	request.get(twitchUrl, function (error, response, body) {
 	  	var data = JSON.parse(body);
 	  	console.log(data)
-		//res.render('dashboard', {games: data.games});
+		res.render('dashboard', {title: "Twitcher's Digest", games: data.games});
 	})
-	
+	var twitchUrl = 'https://api.twitch.tv/kraken/search/streams?q=' + twrsQuery + '&type=suggest'
+	request.get(twitchUrl, function (error, response, body) {
+	  	var data = JSON.parse(body);
+	  	console.log(data)
+		res.render('dashboard', {title: "Twitcher's Digest", streams: data.streams});
+	})
+
+	var twitchUrl = 'https://api.twitch.tv/kraken/search/games?q=' + twrsQuery + '&type=suggest'
+	request.get(twitchUrl, function (error, response, body) {
+	  	var data = JSON.parse(body);
+	  	console.log(data)
+		res.render('dashboard', {title: "Twitcher's Digest", streamers: data.streams.channel.display_name});
+	})
+
 });
 
 // router.get('/dashboard/search/:searchString', function(req,res, next) {
 // 	var twrsSearch = req.params.searchString;
 // 	console.log("This is " + twrsSearch);
-
-	
-	
-
 // });
 
 module.exports = router;
