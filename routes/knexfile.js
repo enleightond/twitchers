@@ -5,7 +5,8 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      databasecd: './twitchersapp'
+
+      database: './twitchersapp'
     }
   },
 
