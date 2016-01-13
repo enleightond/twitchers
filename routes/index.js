@@ -6,6 +6,10 @@ require('locus');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  res.render('signup', { title: "Twitcher's Digest" });
+});
+
+router.get('/login', function(req, res, next) {
   res.render('index', { title: "Twitcher's Digest" });
 });
 
@@ -39,17 +43,13 @@ router.get('/dashboard/search', function(req,res, next) {
 			})
 		})
 	})
-
-
-	// var twitchUrl = 'https://api.twitch.tv/kraken/search/games?q=' + twrsQuery + '&type=suggest'
-	// request.get(twitchUrl, function (error, response, body) {
-	//   	var data = JSON.parse(body);
-	//   	console.log(data)
-	// 	res.render('dashboard', {title: "Twitcher's Digest", streamers: data.streams.channel.display_name});
-	// })
-
 });
-
+	
+// $('.twitch-connect').click(function() {
+//   Twitch.login({
+//     scope: ['user_read', 'channel_read']
+//   });
+// })	
 
 // router.get('/dashboard/search/:searchString', function(req,res, next) {
 // 	var twrsSearch = req.params.searchString;
