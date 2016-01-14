@@ -45,11 +45,6 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// app.get("/auth/twitch", passport.authenticate("twitch"));
-// app.get("/auth/twitch/callback", passport.authenticate("twitch", { failureRedirect: "/" }), function(req, res) {
-//     // Successful authentication, redirect home.
-//     res.redirect("/");
-// });
 passport.use(new twitchStrategy({
     clientID: process.env.TWITCH_CLIENT_ID,
     clientSecret: process.env.TWITCH_CLIENT_SECRET,
@@ -63,6 +58,18 @@ passport.use(new twitchStrategy({
     });
   }
 ));
+
+passport.serializeUser(function(user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+    done(null, user);
+});
+
+app.get("/", function (req, res) {
+    res.render("index");
+});
 
 // development error handler
 // will print stacktrace
