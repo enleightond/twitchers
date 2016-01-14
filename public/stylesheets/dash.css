@@ -1,6 +1,10 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+  background-image: ("https://recstarz.files.wordpress.com/2014/07/wpid-twitch-logo-1.jpg");
+  background-repeat: repeat-y;
+
 }
 
 a {
@@ -21,6 +25,7 @@ h1 {
     padding: 20px; 
 	border: 3px solid purple;
 	background-color: gray;
+	width: 100%;
 
 
 }
