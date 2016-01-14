@@ -1,4 +1,5 @@
 // Update with your config settings.
+require('dotenv').load();
 
 module.exports = {
 
@@ -28,7 +29,7 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
+      database: 'twitchersapp',
       user:     'username',
       password: 'password'
     },
