@@ -6,12 +6,19 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var knex = require('knex');
 var pg = require('pg');
+var passport       = require("passport");
+var twitchStrategy = require("passport-twitch").Strategy;
+var session = require('cookie-session');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var signup = require('./routes/signup');
 
 var app = express();
+
+
+require('dotenv').load();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,6 +31,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize());
+app.use(session({keys: [process.env.SESSION_KEY1, process.env.SESSION_KEY2]}));
 
 app.use('/', routes);
 app.use('/users', users);
@@ -36,7 +45,24 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// error handlers
+// app.get("/auth/twitch", passport.authenticate("twitch"));
+// app.get("/auth/twitch/callback", passport.authenticate("twitch", { failureRedirect: "/" }), function(req, res) {
+//     // Successful authentication, redirect home.
+//     res.redirect("/");
+// });
+passport.use(new twitchStrategy({
+    clientID: process.env.TWITCH_CLIENT_ID,
+    clientSecret: process.env.TWITCH_CLIENT_SECRET,
+    callbackURL: "http://127.0.0.1:3000/auth/twitch/callback",
+    scope: "user_read"
+  },
+  function(accessToken, refreshToken, profile, done) {
+
+    User.findOrCreate({ twitchId: profile.id }, function (err, user) {
+      return done(err, user);
+    });
+  }
+));
 
 // development error handler
 // will print stacktrace
