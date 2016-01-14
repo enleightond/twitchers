@@ -40,7 +40,7 @@
   
 	  <!-- Login box -->
 	  <div class="wrapper">
-	    <form class="form-signin" action="/signup" method="POST">       
+	    <form class="form-signin" action="/login" method="POST">       
 	      <h2 class="form-signin-heading">Please login</h2>
 	      <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
 
@@ -59,7 +59,7 @@
 
 
 	<script>
-	  	Twitch.init({clientId: 'tm1iga98r4cytkq9wnaeup1j9m2iroe'}, function(error, status) {
+	  	Twitch.init({clientId: process.env.TWITCH_CLIENT_ID}, function(error, status) {
 	    // the sdk is now loaded
 	  	});
 
@@ -69,7 +69,7 @@
 		  });
 		})
 
-		Twitch.init({clientId: 'tm1iga98r4cytkq9wnaeup1j9m2iroe'}, function(error, status) {
+		Twitch.init({clientId: process.env.TWITCH_CLIENT_ID}, function(error, status) {
 		  if (error) {
 		    // error encountered while loading
 		    console.log(error);

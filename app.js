@@ -9,10 +9,12 @@ var pg = require('pg');
 var passport       = require("passport");
 var twitchStrategy = require("passport-twitch").Strategy;
 var session = require('cookie-session');
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var signup = require('./routes/signup');
+
+
+var jsonParser = bodyParser.json()
 
 var app = express();
 
@@ -29,6 +31,7 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
