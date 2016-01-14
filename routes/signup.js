@@ -7,7 +7,8 @@ function Users() {
 }
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/signup', function(req, res, next) {
+	console.log(req.body);
   res.send('respond with a resource');
 });
 
