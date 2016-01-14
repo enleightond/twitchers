@@ -4,7 +4,7 @@ require('dotenv').load();
 module.exports = {
 
   development: {
-    client: 'postgresql',
+    client: 'pg',
     connection: {
       database: 'twitchersapp'
     }
@@ -27,16 +27,8 @@ module.exports = {
   },
 
   production: {
-    client: 'postgresql',
-    connection: {
-      database: 'twitchersapp',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
+    client: 'pq',
+    connection: process.env.DATABASE_URL + '?ssl= true',
     migrations: {
       tableName: 'knex_migrations'
     }
