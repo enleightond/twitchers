@@ -33,16 +33,16 @@
           <a class="navbar-brand" href="#">Twitcher's Digest</a>
         </div>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="../">Signup</a></li>
+            <li><a href="../">Sign Out</a></li>
           </ul>
       </div>
     </nav>
   
 	  <!-- Login box -->
 	  <div class="wrapper">
-	    <form class="form-signin" action="/login" method="POST">       
+	    <form class="form-signin" action="/index" method="POST">       
 	      <h2 class="form-signin-heading">Please login</h2>
-	      <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
+	      <input type="text" class="form-control" name="username" placeholder="Name" required="" autofocus="" />
 
 	      <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
 		    <div class="checkbox">
@@ -52,33 +52,33 @@
 		    </div>
 	      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
 
-	      <img src="http://ttv-api.s3.amazonaws.com/assets/connect_dark.png" class="twitch-connect" href="#" />
+	      <!-- <button><img src="http://ttv-api.s3.amazonaws.com/assets/connect_dark.png" class="twitch-connect" href="#" /></button> -->
 	    </form>
 	  </div>
 
 
 
-	<script>
-	  	Twitch.init({clientId: process.env.TWITCH_CLIENT_ID}, function(error, status) {
-	    // the sdk is now loaded
-	  	});
+	 <script>
+	//   	Twitch.init({clientId: process.env.TWITCH_CLIENT_ID}, function(error, status) {
+	//     // the sdk is now loaded
+	//   	});
 
-		$('.twitch-connect').click(function() {
-		  Twitch.login({
-		    scope: ['user_read', 'channel_read']
-		  });
-		})
+	// 	$('.twitch-connect').click(function() {
+	// 	  Twitch.login({
+	// 	    scope: ['user_read', 'channel_read']
+	// 	  });
+	// 	})
 
-		Twitch.init({clientId: process.env.TWITCH_CLIENT_ID}, function(error, status) {
-		  if (error) {
-		    // error encountered while loading
-		    console.log(error);
-		  }
-		  // the sdk is now loaded
-		  if (status.authenticated) {
-		    // user is currently logged in
-		  }
-		});
+	// 	Twitch.init({clientId: process.env.TWITCH_CLIENT_ID}, function(error, status) {
+	// 	  if (error) {
+	// 	    // error encountered while loading
+	// 	    console.log(error);
+	// 	  }
+	// 	  // the sdk is now loaded
+	// 	  if (status.authenticated) {
+	// 	    // user is currently logged in
+	// 	  }
+	// 	});
 	</script>
 
   </body>

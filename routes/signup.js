@@ -16,13 +16,39 @@ router.get('/signup', function(req, res, next) {
 });
 
 
-//LOGGING IN WITH TWITCH ID
-// router.get("/auth/twitch", passport.authenticate("twitch"));
-// router.get("/auth/twitch/callback", passport.authenticate("twitch", { failureRedirect: "/" }), function(req, res) {
+// router.get("/signup", passport.authenticate("twitch"));
+// router.get("/signup/callback", passport.authenticate("twitch", { failureRedirect: "/" }), function(req, res) {
 //     // Successful authentication, redirect home.
-//     res.redirect("/");
+//     res.redirect("/dashboard");
 // });
 
+// passport.use(new twitchStrategy({
+//     clientID: process.env.TWITCH_CLIENT_ID,
+//     clientSecret: process.env.TWITCH_CLIENT_SECRET,
+//     callbackURL: "http://127.0.0.1/signup/callback",
+//     scope: "user_read"
+//   },
+//   function(accessToken, refreshToken, profile, done) {
+
+//     User.findOrCreate({ twitchId: profile.id }, function (err, user) {
+//       return done(err, user);
+//     });
+//   }
+// ));
+
+// passport.serializeUser(function(user, done) {
+//     done(null, user);
+// });
+
+// passport.deserializeUser(function(user, done) {
+//     done(null, user);
+// });
+
+// router.get("/", function (req, res) {
+//     res.render("index");
+// });
+
+//router.listen(3000);
 router.post('/signup', function (req, res) {
 	
 	if(req.body.password === req.body.confirm){
@@ -42,13 +68,9 @@ router.post('/signup', function (req, res) {
 	else if (!req.body) {
 		return res.sendStatus(400)
 		}		
-		  res.send('welcome, ' + req.body.name)
+		  res.redirect('/dashboard')
+	
 	
 });
-
-router.post('si', function (req, res) {
-  if (!req.body) return res.sendStatus(400)
-  // create user in req.body 
-})
 
 module.exports = router;

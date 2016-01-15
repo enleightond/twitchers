@@ -35,7 +35,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
-app.use(session({keys: [process.env.SESSION_KEY1, process.env.SESSION_KEY2]}));
+app.use(session({
+  name: 'cookie-session',
+  keys: [process.env['SECRET_KEY']]
+}));
+
 
 app.use('/', routes);
 app.use('/users', users);
@@ -48,31 +52,6 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-passport.use(new twitchStrategy({
-    clientID: process.env.TWITCH_CLIENT_ID,
-    clientSecret: process.env.TWITCH_CLIENT_SECRET,
-    callbackURL: "http://127.0.0.1:3000/auth/twitch/callback",
-    scope: "user_read"
-  },
-  function(accessToken, refreshToken, profile, done) {
-
-    User.findOrCreate({ twitchId: profile.id }, function (err, user) {
-      return done(err, user);
-    });
-  }
-));
-
-passport.serializeUser(function(user, done) {
-    done(null, user);
-});
-
-passport.deserializeUser(function(user, done) {
-    done(null, user);
-});
-
-app.get("/", function (req, res) {
-    res.render("index");
-});
 
 // development error handler
 // will print stacktrace
