@@ -1,9 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
+<<<<<<< HEAD
 var passport = require("passport")
 var twitchStrategy = require("passport-twitch").Strategy;
 var bcrypt = require('bcrypt');
+=======
+>>>>>>> 266df92af6b1a877f1b628e7d1f02f070e8bc911
 
 function Users() {
 	return knex('users');
@@ -15,6 +18,7 @@ router.get('/signup', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+<<<<<<< HEAD
 
 // router.get("/signup", passport.authenticate("twitch"));
 // router.get("/signup/callback", passport.authenticate("twitch", { failureRedirect: "/" }), function(req, res) {
@@ -73,4 +77,6 @@ router.post('/signup', function (req, res) {
 	
 });
 
+=======
+>>>>>>> 266df92af6b1a877f1b628e7d1f02f070e8bc911
 module.exports = router;

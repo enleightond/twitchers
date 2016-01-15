@@ -2,10 +2,84 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+	<!-- jQuery CDN min -->
+	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	
+	<!-- js file for getting user/pw -->
+	<script language="JavaScript" src="/js/saveToDB.js"></script>
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+	<!-- <script src="//code.jquery.com/jquery.min.js"></script> -->
+	<script src="https://ttv-api.s3.amazonaws.com/twitch.min.js"></script>
+
+
+
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+  	<!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Twitcher's Digest</a>
+        </div>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../">Signup</a></li>
+          </ul>
+      </div>
+    </nav>
+  
+	  <!-- Login box -->
+	  <div class="wrapper">
+	    <form class="form-signin" action="/signup" method="POST">       
+	      <h2 class="form-signin-heading">Please login</h2>
+	      <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
+
+	      <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
+		    <div class="checkbox">
+		      <label class="checkbox">
+		        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe">Remember me
+		      </label>
+		    </div>
+	      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+
+	      <img src="http://ttv-api.s3.amazonaws.com/assets/connect_dark.png" class="twitch-connect" href="#" />
+	    </form>
+	  </div>
+
+
+
+	<script>
+	  	Twitch.init({clientId: 'tm1iga98r4cytkq9wnaeup1j9m2iroe'}, function(error, status) {
+	    // the sdk is now loaded
+	  	});
+
+		$('.twitch-connect').click(function() {
+		  Twitch.login({
+		    scope: ['user_read', 'channel_read']
+		  });
+		})
+
+		Twitch.init({clientId: 'tm1iga98r4cytkq9wnaeup1j9m2iroe'}, function(error, status) {
+		  if (error) {
+		    // error encountered while loading
+		    console.log(error);
+		  }
+		  // the sdk is now loaded
+		  if (status.authenticated) {
+		    // user is currently logged in
+		  }
+		});
+	</script>
+
   </body>
 </html>
