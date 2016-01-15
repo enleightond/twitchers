@@ -3,9 +3,8 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   min-height: 500px;
   padding-top: 70px;
-  background: #eee !important;
 
-  background-image: ("https://recstarz.files.wordpress.com/2014/07/wpid-twitch-logo-1.jpg");
+  background-image: url("../images/dashboard1920.jpg");
   background-repeat: repeat-y;
 
 
