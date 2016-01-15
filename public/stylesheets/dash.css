@@ -50,6 +50,7 @@ img {
     padding: 20px; 
     width: 200px;
     height: 600px; 
+    background-color: white;
 	border: 3px solid purple;
 }
 
