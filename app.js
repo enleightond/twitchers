@@ -6,12 +6,21 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var knex = require('knex');
 var pg = require('pg');
-
+var passport       = require("passport");
+var twitchStrategy = require("passport-twitch").Strategy;
+var session = require('cookie-session');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var signup = require('./routes/signup');
 
+
+var jsonParser = bodyParser.json()
+
 var app = express();
+
+
+require('dotenv').load();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,8 +31,15 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize());
+app.use(session({
+  name: 'cookie-session',
+  keys: [process.env['SECRET_KEY']]
+}));
+
 
 app.use('/', routes);
 app.use('/users', users);
@@ -36,7 +52,6 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// error handlers
 
 // development error handler
 // will print stacktrace
