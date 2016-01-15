@@ -4,10 +4,6 @@ var knex = require('../db/knex');
 var passport = require("passport")
 var twitchStrategy = require("passport-twitch").Strategy;
 var bcrypt = require('bcrypt');
-<<<<<<< HEAD
-
-=======
->>>>>>> sandbox
 
 function Users() {
 	return knex('users');
@@ -19,11 +15,6 @@ router.get('/signup', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> sandbox
 // router.get("/signup", passport.authenticate("twitch"));
 // router.get("/signup/callback", passport.authenticate("twitch", { failureRedirect: "/" }), function(req, res) {
 //     // Successful authentication, redirect home.
