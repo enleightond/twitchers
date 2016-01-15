@@ -2,7 +2,7 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 
-  background-image: ("https://recstarz.files.wordpress.com/2014/07/wpid-twitch-logo-1.jpg");
+  background-image: url("../images/dashboard1920.jpg");
   background-repeat: repeat-y;
 
 }
@@ -50,6 +50,7 @@ img {
     padding: 20px; 
     width: 200px;
     height: 600px; 
+    background-color: white;
 	border: 3px solid purple;
 }
 
