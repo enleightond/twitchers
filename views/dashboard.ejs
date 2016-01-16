@@ -50,14 +50,14 @@
 
       <div class="col-md-3"><h2>Add to Favorites</h2>
         <% games.forEach(function(game) { %>
-         <li> <%= game.name %> </li>
+         <li><a href="https://api.twitch.tv/kraken/search/games?q=" + twrsQuery + "&type=suggest"> <%= game.name %> </a></li>
         <% }); %>
         
       </div>
     
       <div class="col-md-6"><h1>Favorite Game Streams</h1>
       <% games.forEach(function(game) { %>
-          <img src=<%= game.box.small %> />
+          <!-- <img src=<%= game.box.small %> /> -->
         <% }); %>
         
       </div>
@@ -68,7 +68,7 @@
           <ul class= "list-unstyled">
             <li>
             <% streams.forEach(function(stream) { %>
-              <%= stream.channel.display_name %>
+              <a href=""><%= stream.channel.display_name %></a>
             <% }); %>
             </li>
           </ul>
