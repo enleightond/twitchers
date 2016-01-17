@@ -43,14 +43,14 @@
     <div class="row ">
       <form action="/dashboard/search" method="get">
         <div class="input-group">
-          <input type="text" name="twitcherSearch" class="form-control" placeholder="Search for games or streamers...">
           <input type="submit" value="submit">
+          <input type="text" name="twitcherSearch" class="form-control" placeholder="Search for games or streamers...">
         </div>
       </form>
 
       <div class="col-md-3"><h2>Add to Favorites</h2>
         <% games.forEach(function(game) { %>
-         <li><a href="https://api.twitch.tv/kraken/search/games?q=" + twrsQuery + "&type=suggest"> <%= game.name %> </a></li>
+         <li><a href=""> <%= game.name %> </a></li>
         <% }); %>
         
       </div>
@@ -68,7 +68,7 @@
           <ul class= "list-unstyled">
             <li>
             <% streams.forEach(function(stream) { %>
-              <a href=""><%= stream.channel.display_name %></a>
+              <a href="https://api.twitch.tv/kraken/streams"><%= stream.channel.display_name %></a>
             <% }); %>
             </li>
           </ul>
