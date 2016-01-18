@@ -67,23 +67,24 @@ router.post('/index', function(req, res, next){
    }
  });
 });
-// router.post('/index', function (req, res) {
-// 	var salt = bcrypt.genSalt(10, function(err, salt){});		
-// 	var hashpass = bcrypt.hash(req.body.password, salt, function(err, hash) {
-// 		    	knex({password: hash}).then(function(){})});	    		
-// 	var username = req.body.username;
+
+router.post('/index', function (req, res) {
+	var salt = bcrypt.genSalt(10, function(err, salt){});		
+	var hashpass = bcrypt.hash(req.body.password, salt, function(err, hash) {
+		    	knex({password: hash}).then(function(){})});	    		
+	var username = req.body.username;
 
 
-// 	if (hashpass && username) {
-// 		// SEARCH BY USERNAME
-// 		// COMPARE BCRYPT PASSWORD
-// 		knex('users').where({name: username, password: hashpass})
-// 		// SOMETHING IN THE SESSION
+	if (hashpass && username) {
+		// SEARCH BY USERNAME
+		// COMPARE BCRYPT PASSWORD
+		knex('users').where({name: username, password: hashpass})
+		// SOMETHING IN THE SESSION
 
-// 		// AUTHORIZE AND REDIRECT
-// 		res.redirect('/dashboard');
-// 	};
+		// AUTHORIZE AND REDIRECT
+		res.redirect('/dashboard');
+	};
 
-// })
+ })
 
 module.exports = router;
